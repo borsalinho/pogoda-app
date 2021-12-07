@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 export class AppComponent {
   cityName : string ="";
   response: any;
-  
+  dataSource:[] | any = []; 
 
   constructor(private http:HttpClient){
 
@@ -18,7 +18,9 @@ export class AppComponent {
     this.http.get('https://api.openweathermap.org/data/2.5/weather?q='+this.cityName+'&appid=26312246dcd57cf04728a93f70af1fe8')
     .subscribe((response)=>{
       this.response = response;
-      console.log(this.response)
+      console.log(this.response);
+      this.dataSource.push(this.response);
+      console.log(this.dataSource);
     })
   }
 }

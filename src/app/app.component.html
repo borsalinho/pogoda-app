@@ -8,18 +8,16 @@
     placeholder="Введите название города"
     [(ngModel)]="cityName">
     <button (click)="search()">search</button>
-    <div *ngIf="response">
-      <img src="{{response.avatar_url}}">
-      <p>Город :{{response.name}}</p>
-      <p>Температура: {{response.main.temp}} К</p>
-      <p>макс: {{response.main.temp_max}} К, </p>
-      <p>мин: {{response.main.temp_min}} К</p>
-    </div>
   </div>
-
-
-  <input 
-  type="text" 
-  id="txtSearch" 
-  [(ngModel)]="task" />
+  
+  <ul *ngFor="let city of dataSource; let i=index" >
+    <li>
+      <a href="">
+        {{city.name}}
+        {{city.main.temp}}
+        <button (click)="dataSource.splice(i,1)">Удалить</button>
+      </a>
+    </li>
+  </ul>
+  
 </section>

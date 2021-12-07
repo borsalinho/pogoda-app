@@ -3,23 +3,23 @@
       <h1>Погода, епта!</h1>
       <h4>Введите название города</h4>
       
-      <input 
-      type="text" 
-      placeholder="Введите название города"
-      [(ngModel)]="cityName">
+      <input type="text" placeholder="RUS" [(ngModel)]="cityName">
       <button (click)="search()">search</button>
-  
+      <div *ngIf="isLoading">
+        Загружается...
+      </div>
       <p>{{errorMessage}}</p>
       <ul *ngFor="let city of dataSource; let i=index" >
-        
         <li>
-          <a routerLink="/details">
-            {{city.name}}
-            {{city.main.temp}}
-            <button (click)="dataSource.splice(i,1)">Удалить</button>
-          </a>
+          <a routerLink="/details/{{i+1}}" mask="0*.00">{{city.name}}</a>
+
+          {{273-city.main.temp | number : '1.0-2'}}
+          
+          <button (click)="dataSource.splice(i,1)">Удалить</button>
+          
         </li>
       </ul>
     </div>
-  </section>
+    
+</section>
   

@@ -1,1 +1,19 @@
-<p>details works!</p>
+
+<p>{{errorMessage}}</p>
+    {{exportedCity}}
+    
+<div *ngIf="isLoading">
+    Загрузка...
+</div>
+
+<div *ngFor="let item of dataSource">
+    <ul *ngFor="let cityes of item; let i=index" >
+        <li *ngIf="i == 0 ||i == 8 || i == 16 || i == 32 || i == 39">
+            {{cityes.dt_txt}} {{(273-cityes.main.temp | number : '1.0-2')}}
+        </li>
+    </ul>
+    <button (click)="refreshData()">Обновить</button>
+</div>
+
+
+

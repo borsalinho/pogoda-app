@@ -10,12 +10,14 @@ import {ReactiveFormsModule} from '@angular/forms';
 
 import { DetailsComponent } from './details/details.component';
 import { SearchComponent } from './search/search.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DetailsComponent,
-    SearchComponent
+    SearchComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

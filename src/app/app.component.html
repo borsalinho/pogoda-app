@@ -1,30 +1,3 @@
-<section>
-  <div class="container">
-    <h1>Погода, епта!</h1>
-    <h4>Введите название города</h4>
-    
-    <input 
-    type="text" 
-    placeholder="Введите название города"
-    [(ngModel)]="cityName">
-    <button (click)="search()">search</button>
 
-    <p>{{errorMessage}}</p>
-    <ul *ngFor="let city of dataSource; let i=index" >
-      <li>
-        <a href="">
-          {{city.name}}
-          {{city.main.temp}}
-          <button (click)="dataSource.splice(i,1)">Удалить</button>
-        </a>
-      </li>
-    </ul>
+<router-outlet></router-outlet>
 
-
-
-
-
-  </div>
-  
-  
-</section>

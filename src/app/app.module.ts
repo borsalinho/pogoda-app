@@ -8,9 +8,14 @@ import { HttpClientModule } from '@angular/common/http'
 import { FormsModule } from '@angular/forms';
 import {ReactiveFormsModule} from '@angular/forms';
 
+import { DetailsComponent } from './details/details.component';
+import { SearchComponent } from './search/search.component';
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DetailsComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,

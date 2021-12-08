@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {ExportCityService} from '../export-city.service';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-details',
@@ -9,26 +10,30 @@ import {ExportCityService} from '../export-city.service';
 })
 export class DetailsComponent implements OnInit  {
   response:any;
-  errorMessage:string |any;
+  errorMessage:boolean= false;
+  exportedCityBoolean:boolean = false;
   exportedCity:string|any;
   dataSource:[] | any = []; 
   isLoading:boolean=false;
 
   constructor(
     private http:HttpClient,
-    private readonly exportCityData: ExportCityService
+    private readonly exportCityData: ExportCityService,
+    private _location: Location
   ) { }
   
   ngOnInit(): void {
     
-    console.log(this.exportCityData.exportCity)
+    // console.log(this.exportCityData.exportCity)
     this.exportedCity=this.exportCityData.exportCity
     this.getData()
     
   }
 
   getData(){
+    this.errorMessage = false;
     this.isLoading = true;
+    this.exportedCityBoolean = true;
     this.http.get('https://api.openweathermap.org/data/2.5/forecast?q='+this.exportedCity+'&appid=26312246dcd57cf04728a93f70af1fe8&cnt=50')
     .subscribe(
       (response)=>{
@@ -37,8 +42,12 @@ export class DetailsComponent implements OnInit  {
         this.isLoading = false;
       },
       (error) => {
-        this.errorMessage = "Город не найден";
+        this.errorMessage = true;
         this.isLoading = false;
+        this.exportedCityBoolean = false;
+        // тут нужен таймер б и можно было без кнопки назад
+        // this._location.back()
+        ;
       },
     )
   }

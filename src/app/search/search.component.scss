@@ -1,6 +1,123 @@
-.container{
-    max-width: 1200px;
-    padding-left: 40px;
-    padding-right: 40px;
-    margin: 0 auto;
+
+.header{
+    background-color:darkcyan;
+}
+.header__title{
+    font-size: 32px;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+.search{
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+}
+.search__body{
+    display: contents;
+}
+.search__title{
+    text-align: center;
+    margin-bottom: 20px;
+    color: darkcyan;
+}
+.search__input{
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid darkcyan;
+    text-align: center;
+    background-color: rgb(223, 215, 215);
+    outline: none;
+    margin-bottom: 10px;
+    font-size: 18px;
+    text-transform: capitalize;
+}
+.search__button{
+    background: darkcyan;
+    color: white;
+    padding: 10px;
+    font-size: 18px;
+    border-radius: 10px;
+    outline: none;
+    margin-bottom: 10px;
+}
+.error_enter{
+    color: red;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 1px solid red;
+    padding: 10px;
+    border-radius: 10px;
+}
+.error_loading{
+    color: darkcyan;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 1px solid darkcyan;
+    padding: 10px;
+    border-radius: 10px;
+}
+.error_repeat-city{
+    color: red;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 1px solid red;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.search__item{
+    margin:10px 0;
+    border: 1px solid darkcyan;
+    padding: 10px;
+    border-radius: 10px;
+    grid-template-columns: auto 75px 80px;
+    display: grid;
+
+    a{
+        text-decoration: none;
+        font-weight: bold;
+        color: darkcyan
+    }
+    button{
+        color: darkcyan;
+        border: 1px solid darkcyan;
+        border-radius: 5px;
+    }
+    
+}
+
+
+
+@media (min-width:600px) {
+    .header__title{
+        font-size: 52px;
+        padding: 40px;
+    }
+    .search{
+        width: 600px;
+        margin: 0 auto;
+    }
+    .search__title{
+        font-size: 25px;
+    }
+}
+
+::-webkit-input-placeholder {
+    text-align:center;
+    }
+    
+:-moz-placeholder { /* Firefox 18- */
+    text-align:center;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+    text-align:center;  
+}
+
+:-ms-input-placeholder {  
+    text-align:center; 
 }

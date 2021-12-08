@@ -1,25 +1,38 @@
 <section>
+  <div class="header">
     <div class="container">
-      <h1>Погода, епта!</h1>
-      <h4>Введите название города</h4>
-      
-      <input type="text" placeholder="RUS" [(ngModel)]="cityName">
-      <button (click)="search()">search</button>
-      <div *ngIf="isLoading">
-        Загружается...
-      </div>
-      <p>{{errorMessage}}</p>
-      <ul *ngFor="let city of dataSource; let i=index" >
-        <li>
-          <a routerLink="/details/{{i+1}}" mask="0*.00">{{city.name}}</a>
-
-          {{273-city.main.temp | number : '1.0-2'}}
-          
-          <button (click)="dataSource.splice(i,1)">Удалить</button>
-          
-        </li>
-      </ul>
+      <h1 class="header__title">Погода</h1>
     </div>
+  </div>
+
+  <div class="body">
+    <div class="container">
+        <div class="search">
+          <h4 class="search__title">Введите название города</h4>
+          <div class="search__body">
+            <input class="search__input" type="text" placeholder="Город" [(ngModel)]="cityName" (keyup.enter)="search()">
+
+            <button class="search__button" [disabled] ="!cityName" (click)="search()">Поиск</button>
+
+            <div class="error_loading" *ngIf="isLoading">Загружается...</div>
+            <div class="error_enter" *ngIf="errorMessage">Неверное название города</div>
+            <div class="error_repeat-city" *ngIf="errorRepeatCity">Этот город уже присутсвует</div>
+            
+            <div class="search__item" *ngFor="let city of dataSource; let i=index" >
+              <a routerLink="/details/{{i+1}}" mask="0*.00">{{city.name}}</a>
+              {{city.main.temp-273 | number : '1.0-2'}} ℃
+              <button (click)="dataSource.splice(i,1)">Удалить</button>
+            </div>
+
+          </div>
+          
+          
+        </div>
+    </div>
+  </div>
+    
+
+    
     
 </section>
   

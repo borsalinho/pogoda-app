@@ -1,1 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200;300;400;500;600;700&display=swap');
+
+body{
+    font-family: 'Readex Pro', sans-serif;
+}
+
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+.container{
+    padding-left: 20px;
+    padding-right: 20px;
+}
+@media (min-width:600px) {
+    .container{
+        max-width: 1200px;
+        padding-left: 40px;
+        padding-right: 40px;
+        margin: 0 auto;
+    }
+}

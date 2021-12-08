@@ -11,10 +11,10 @@ export class SearchComponent implements OnInit {
   cityName : string ="";
   response: any;
   dataSource:[] | any  = []; 
-  errorMessage:any;
+  errorRepeatCity:boolean=false;
   isLoading:boolean=false;
   usedCityList:any=[] ;
-  
+  errorMessage:boolean=false;
 
   constructor(
     private http:HttpClient,
@@ -26,12 +26,14 @@ export class SearchComponent implements OnInit {
 
   search(){
     this.isLoading = true;
+    this.errorMessage = false;
+    this.errorRepeatCity = false;
     this.http.get('https://api.openweathermap.org/data/2.5/weather?q='+this.cityName+'&appid=26312246dcd57cf04728a93f70af1fe8')
     .subscribe(
       (response)=>{
-        this.errorMessage = "";
+        this.errorMessage = true;
         this.response = response;
-        
+        this.errorRepeatCity = false;
         if (!this.usedCityList.includes(this.response.name)){
           this.usedCityList.push(this.response.name);
           this.dataSource.push(this.response);
@@ -39,15 +41,18 @@ export class SearchComponent implements OnInit {
           this.exportCityData.exportCity = this.cityName;
         }
         else{
-          this.errorMessage = "Город уже есть";
+          this.errorMessage = false;
+          this.isLoading = false;
+          this.errorRepeatCity = true;
         };
         
-       
+        this.errorMessage = false;
         this.isLoading = false;
       },
       (error) => {
-        this.errorMessage = "Не правильный ввод";
+        this.errorRepeatCity = false;
         this.isLoading = false;
+        this.errorMessage = true;
       },
     )
   }
